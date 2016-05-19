@@ -51,11 +51,8 @@ def make_f(roots):
     #write some code for the function
     func_code = "*".join(["(z-"+str(r)+")" for r in roots])
 
-    # execute this
-    exec("def f(z): \n    return "+func_code)
-
-    #and return it.
-    return f
+    # execute this and return it
+    return eval("lambda z:(%s)" % (func_code, ))
 
 def make_fp(roots):
 
@@ -69,8 +66,7 @@ def make_fp(roots):
         ]
     )
 
-    exec("def fp(z): \n    return "+func_code)
-    return fp
+    return eval("lambda z:(%s)" % (func_code, ))
 
 def newton(f, df, z0, roots, max_iter, limit):
 
